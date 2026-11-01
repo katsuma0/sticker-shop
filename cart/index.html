@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <meta name="theme-color" content="#FFFFFF" media="(prefers-color-scheme: light)">
+    <meta name="theme-color" content="#121212" media="(prefers-color-scheme: dark)">
+    <meta name="description" content="Your cart at the Katsuma Onishi shop.">
+    <title>Cart · Katsuma Onishi</title>
+    <link rel="icon" href="data:,">
+    <link rel="stylesheet" href="/shop/assets/shop.css">
+    <script src="/shop/assets/shop.js" defer></script>
+</head>
+<body>
+
+<header class="top">
+    <a class="name" href="/">Katsuma Onishi</a>
+    <nav>
+        <a href="/shop/">Shop</a>
+        <a href="/shop/stickers/">Stickers</a>
+        <a href="/shop/sewing/">Sewing</a>
+        <a href="/shop/cart/" aria-current="page">Cart<span data-cart-count></span></a>
+    </nav>
+</header>
+
+<main class="page">
+
+<h1>Cart</h1>
+
+<div class="cart-wrap" id="cart">
+    <div class="lines" id="lines"></div>
+    <aside class="summary" aria-label="Order summary">
+        <p class="sum-row"><span>Subtotal</span><span id="subtotal">$0.00</span></p>
+        <p class="sum-row meta"><span>Shipping</span><span>At checkout</span></p>
+        <button type="button" class="btn wide" id="checkout" disabled>Checkout</button>
+        <p class="meta" id="checkout-status" aria-live="polite"></p>
+        <p class="meta">Payment is through Stripe. Prices in CAD.</p>
+    </aside>
+</div>
+
+<footer>
+    <p>Katsuma Onishi, Markham, Ontario. Prices in CAD. Questions go through <a href="/contact/">contact</a>.</p>
+    <p>Last updated: November 2026</p>
+</footer>
+
+</main>
+
+</body>
+</html>

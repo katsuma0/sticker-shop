@@ -1,0 +1,6 @@
+name = "katsuma-shop-checkout"
+main = "checkout.js"
+compatibility_date = "2026-11-01"
+
+[vars]
+ALLOWED_ORIGIN = "https://katsuma.ca"

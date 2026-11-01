@@ -1,0 +1,253 @@
+/* =====================================================================
+   katsuma.ca/shop. Same paper, ink and blue as the main site, so the
+   shop reads as part of it. Wider measure than the main site because a
+   catalogue needs columns.
+   ===================================================================== */
+
+:root {
+  --bg: #FFFFFF;
+  --ink: #1A1A1A;
+  --ink-2: #6E6E6E;
+  --rule: #E4E4E4;
+  --link: #1A56A0;
+  --wash: #F5F5F4;
+  --on-ink: #FFFFFF;
+  color-scheme: light dark;
+}
+@media (prefers-color-scheme: dark) {
+  :root {
+    --bg: #121212;
+    --ink: #E6E6E4;
+    --ink-2: #9A9A98;
+    --rule: #2B2B2B;
+    --link: #85ACDF;
+    --wash: #1B1B1B;
+    --on-ink: #121212;
+  }
+}
+
+* { box-sizing: border-box; }
+html { -webkit-text-size-adjust: 100%; }
+body {
+  margin: 0;
+  min-height: 100dvh;
+  display: flex;
+  flex-direction: column;
+  background: var(--bg);
+  color: var(--ink);
+  font: 16px/1.65 -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto,
+    "Helvetica Neue", Arial, sans-serif;
+  padding: 28px 22px 40px;
+}
+.page, .top {
+  max-width: 64rem;
+  width: 100%;
+  margin-left: auto;
+  margin-right: auto;
+}
+.page { flex: 1 0 auto; display: flex; flex-direction: column; }
+.page > * { flex: none; }
+.narrow { max-width: 42rem; }
+
+/* ------------------------------------------------------------ header */
+.top {
+  margin-bottom: 34px;
+  display: flex;
+  flex-wrap: wrap;
+  align-items: baseline;
+  gap: 6px 18px;
+}
+.top .name { font-weight: 700; color: var(--ink); text-decoration: none; margin-right: auto; }
+.top nav { display: flex; flex-wrap: wrap; gap: 14px; }
+.top nav a { color: var(--ink-2); text-decoration: none; }
+.top nav a:hover, .top nav a:focus-visible { color: var(--ink); text-decoration: underline; }
+.top nav a[aria-current="page"] { color: var(--ink); }
+
+/* -------------------------------------------------------------- type */
+h1 { font-size: 1.7rem; line-height: 1.25; font-weight: 700; margin: 0 0 0.7rem; letter-spacing: -0.01em; }
+h2 {
+  font-size: 0.8rem;
+  font-weight: 600;
+  letter-spacing: 0.09em;
+  color: var(--ink-2);
+  border-bottom: 1px solid var(--rule);
+  padding-bottom: 7px;
+  margin: 2.6rem 0 0.9rem;
+}
+h3 { font-size: 1rem; font-weight: 600; margin: 0; }
+p { margin: 0 0 0.85rem; }
+a { color: var(--link); text-decoration: none; }
+a:hover, a:focus-visible { text-decoration: underline; }
+:focus-visible { outline: 2px solid var(--link); outline-offset: 2px; border-radius: 3px; }
+.lead { max-width: 42rem; margin-bottom: 1.1rem; }
+.meta { color: var(--ink-2); font-size: 0.875rem; }
+img { max-width: 100%; }
+
+/* ----------------------------------------------------------- buttons */
+.btn {
+  display: inline-block;
+  font: inherit;
+  font-size: 0.9375rem;
+  border: 1px solid var(--ink);
+  border-radius: 8px;
+  padding: 8px 16px;
+  background: var(--ink);
+  color: var(--on-ink);
+  cursor: pointer;
+  text-decoration: none;
+  text-align: center;
+}
+.btn:hover, .btn:focus-visible { opacity: 0.86; text-decoration: none; }
+.btn.quiet { background: transparent; color: var(--ink); border-color: var(--rule); }
+.btn.quiet:hover, .btn.quiet:focus-visible { border-color: var(--ink); opacity: 1; }
+.btn[disabled] { opacity: 0.4; cursor: not-allowed; }
+.btn.wide { width: 100%; }
+
+/* ------------------------------------------- shop landing: two doors */
+.doors {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(16rem, 1fr));
+  gap: 22px;
+  margin: 1.4rem 0 0;
+}
+.door { color: var(--ink); text-decoration: none; display: block; }
+.door:hover, .door:focus-visible { text-decoration: none; }
+.door .art {
+  aspect-ratio: 4 / 3;
+  background: var(--wash);
+  border: 1px solid var(--rule);
+  border-radius: 10px;
+  margin-bottom: 0.8rem;
+  transition: border-color 0.15s;
+}
+.door:hover .art, .door:focus-visible .art { border-color: var(--ink-2); }
+.door .door-t { font-weight: 600; }
+.door .door-t span { color: var(--link); }
+.door:hover .door-t span { text-decoration: underline; }
+.door .door-s { color: var(--ink-2); font-size: 0.875rem; margin: 0.15rem 0 0; }
+
+/* ------------------------------------------------- category filter */
+.filters { display: flex; flex-wrap: wrap; gap: 8px; margin: 0.4rem 0 1.6rem; }
+.chip {
+  font: inherit;
+  font-size: 0.875rem;
+  border: 1px solid var(--rule);
+  background: transparent;
+  color: var(--ink);
+  border-radius: 999px;
+  padding: 5px 14px;
+  cursor: pointer;
+}
+.chip:hover { border-color: var(--ink-2); }
+.chip[aria-pressed="true"] { background: var(--ink); color: var(--on-ink); border-color: var(--ink); }
+.chip .n { color: inherit; opacity: 0.6; margin-left: 4px; }
+.cat-note { color: var(--ink-2); font-size: 0.875rem; margin: -0.8rem 0 1.4rem; max-width: 42rem; min-height: 1.4em; }
+
+/* ---------------------------------------------------------- products */
+.grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(14rem, 1fr));
+  gap: 32px 22px;
+}
+.card { display: flex; flex-direction: column; }
+/* the sheet itself is 16 by 23, so the frame is too */
+.sheet {
+  aspect-ratio: 16 / 23;
+  background: var(--wash);
+  border: 1px solid var(--rule);
+  border-radius: 8px;
+  margin-bottom: 0.75rem;
+  display: grid;
+  place-items: center;
+  overflow: hidden;
+}
+.sheet img { width: 100%; height: 100%; object-fit: contain; display: block; }
+.sheet .blank { color: var(--ink-2); font-size: 0.75rem; letter-spacing: 0.06em; }
+.card .cat { color: var(--ink-2); font-size: 0.8125rem; margin: 0.1rem 0 0.6rem; }
+
+/* size picker: two radios dressed as one segmented control */
+.sizes {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  border: 1px solid var(--rule);
+  border-radius: 8px;
+  overflow: hidden;
+  margin: 0 0 0.6rem;
+  padding: 0;
+}
+.sizes legend { position: absolute; width: 1px; height: 1px; overflow: hidden; clip: rect(0 0 0 0); }
+.sizes label {
+  display: block;
+  text-align: center;
+  font-size: 0.8125rem;
+  line-height: 1.35;
+  padding: 6px 4px;
+  cursor: pointer;
+  color: var(--ink-2);
+}
+.sizes label + label { border-left: 1px solid var(--rule); }
+.sizes input { position: absolute; opacity: 0; pointer-events: none; }
+.sizes label b { display: block; font-weight: 600; color: var(--ink); }
+.sizes label:has(input:checked) { background: var(--wash); color: var(--ink); box-shadow: inset 0 -2px 0 var(--ink); }
+.sizes label:has(input:focus-visible) { outline: 2px solid var(--link); outline-offset: -2px; }
+.card .btn { margin-top: auto; }
+.added { color: var(--ink-2); font-size: 0.8125rem; min-height: 1.3em; margin: 0.35rem 0 0; }
+
+/* -------------------------------------------------------- facts list */
+.facts { display: grid; grid-template-columns: repeat(auto-fit, minmax(14rem, 1fr)); gap: 6px 32px; }
+.facts p { margin: 0 0 0.6rem; font-size: 0.95rem; }
+
+/* -------------------------------------------------------------- cart */
+.cart-wrap { display: grid; gap: 40px; }
+@media (min-width: 800px) { .cart-wrap { grid-template-columns: 1fr 18rem; align-items: start; } }
+.lines { border-top: 1px solid var(--rule); }
+.line {
+  display: grid;
+  grid-template-columns: 3.5rem 1fr auto;
+  gap: 14px;
+  align-items: center;
+  padding: 14px 0;
+  border-bottom: 1px solid var(--rule);
+}
+.line .thumb { aspect-ratio: 16 / 23; background: var(--wash); border: 1px solid var(--rule); border-radius: 4px; overflow: hidden; }
+.line .thumb img { width: 100%; height: 100%; object-fit: contain; display: block; }
+.line .what .meta { display: block; }
+.line .right { text-align: right; }
+.qty { display: inline-flex; align-items: center; border: 1px solid var(--rule); border-radius: 8px; margin-top: 6px; }
+.qty button {
+  font: inherit;
+  border: 0;
+  background: transparent;
+  color: var(--ink);
+  width: 2rem;
+  height: 1.9rem;
+  cursor: pointer;
+}
+.qty span { min-width: 1.6rem; text-align: center; font-size: 0.9rem; }
+.linkish { font: inherit; font-size: 0.8125rem; border: 0; background: none; color: var(--ink-2); padding: 0; cursor: pointer; text-decoration: underline; text-decoration-color: var(--rule); }
+.linkish:hover { color: var(--ink); }
+.summary { border: 1px solid var(--rule); border-radius: 10px; padding: 18px; }
+.summary .sum-row { display: flex; justify-content: space-between; margin: 0 0 0.4rem; }
+.summary .total { font-weight: 600; border-top: 1px solid var(--rule); padding-top: 0.6rem; margin-top: 0.6rem; }
+.summary .btn { margin-top: 1rem; }
+.summary .meta { margin: 0.7rem 0 0; }
+.empty { color: var(--ink-2); }
+
+/* ------------------------------------------------------------ footer */
+footer {
+  margin-top: auto;
+  padding-top: 1rem;
+  border-top: 1px solid var(--rule);
+  color: var(--ink-2);
+  font-size: 0.8125rem;
+}
+.page > :has(+ footer) { margin-bottom: 2.6rem; }
+footer p { margin: 0 0 0.3rem; }
+footer a { color: inherit; text-decoration: underline; text-decoration-color: var(--rule); }
+footer a:hover { color: var(--ink); }
+
+@media print {
+  body { padding: 0; font-size: 11pt; }
+  .top nav, .filters, .btn, .sizes { display: none; }
+  a { color: inherit; }
+}
