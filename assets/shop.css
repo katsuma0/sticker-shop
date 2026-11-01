@@ -150,6 +150,7 @@ img { max-width: 100%; }
   gap: 32px 22px;
 }
 .card { display: flex; flex-direction: column; }
+.card[hidden] { display: none; }
 /* the sheet itself is 16 by 23, so the frame is too */
 .sheet {
   aspect-ratio: 16 / 23;
@@ -250,4 +251,10 @@ footer a:hover { color: var(--ink); }
   body { padding: 0; font-size: 11pt; }
   .top nav, .filters, .btn, .sizes { display: none; }
   a { color: inherit; }
+}
+
+/* two sheets across on a phone; one huge sheet per screen is a lot of scrolling */
+@media (max-width: 560px) {
+  .grid { grid-template-columns: 1fr 1fr; gap: 26px 14px; }
+  .sizes label { font-size: 0.75rem; padding: 6px 2px; }
 }
